@@ -30,9 +30,9 @@ Each rule applies only when its trigger occurs.
   unknowns plainly. Never record secrets, personal data or raw transcripts.
 - **Clean.** Remove own temp files and dead code; do not refactor untouched files.
 - **Branches & commits.** Develop on feature branches, merge into `dev` (then
-  delete the merged local branch with `git branch -d`), and PR `dev` into
-  `main`. Commit verified work in coherent batches (main agent / coordinator
-  only; subagents do not commit). Do not push or rewrite history unless asked.
+  delete the merged branch with `git branch -d`), and stop at `dev`; only PR
+  `dev` into `main` when asked to release. Commit verified batches (main agent /
+  coordinator only; subagents never commit). Never push/rewrite unless asked.
 - **Ask first.** Stop and ask before changing IDE, user, account or billing
   settings; accessing signed-in web accounts; deploying; or destructive actions.
 - **Cost & communication.** Read [docs/ai/cost.md](docs/ai/cost.md) when picking
