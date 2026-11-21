@@ -43,15 +43,16 @@ includes in either file.
    adoption or initial setup to generate only the needed ClarifyDoc rules,
    skills, `.gitignore` entry, and MCP guidance (otherwise create none).
 5. Delete anything you do not need. Fewer files means less startup metadata.
-6. Run `pwsh -NoProfile -File scripts/check-context-size.ps1` to verify
-   always-on budgets, Antigravity rule caps, and skill deduplication.
+6. Run `pwsh -NoProfile -File scripts/check-context-size.ps1 -FailOnWarning` to
+   verify always-on budgets, Antigravity rule caps, and skill deduplication.
 
 ## Curated skills included
 
 Stored once in `.agents/skills/` for both platforms:
 
-- **Core workflow:** `coordinate-task` (Antigravity main-agent coordination),
-  `project-remember`, `systematic-debugging`, `verification-before-completion`.
+- **Core workflow:** `coordinate-task` (Antigravity main-agent coordination;
+  Copilot uses `.github/agents/coordinator.agent.md`), `project-remember`,
+  `systematic-debugging`, `verification-before-completion`.
 - **On-demand generators:** `generate-handoff-canvas` (recreates a Copilot
   `.github/extensions/<id>/` canvas or Antigravity MCP App side-pane panel),
   `setup-clarifydoc` (detects ClarifyDoc support at template adoption/init and
@@ -60,10 +61,10 @@ Stored once in `.agents/skills/` for both platforms:
 ## What is deliberately missing
 
 - **No application code, secrets, or machine-local paths.** MCP configs live as
-  empty `.example` templates (`.agents/mcp-config.json.example` and
-  `.mcp.json.example`); note that `.mcp.json` and Antigravity's active
-  `mcp_config.json` use `"mcpServers"`, while VS Code's `.vscode/mcp.json`
-  expects `"servers"`. Never commit literal secrets or absolute user paths.
+  empty `.example` templates (`.agents/mcp_config.json.example` and
+  `.mcp.json.example`); note that `.mcp.json` and `.agents/mcp_config.json`
+  use `"mcpServers"`, while VS Code's `.vscode/mcp.json` expects `"servers"`.
+  Never commit literal secrets or absolute user paths.
 - **No enabled hooks.** See `.agents/hooks/README.md` and
   `.github/hooks/README.md`.
 - **No stack-specific rules.** Add project rules to `.agents/rules/*.md`
@@ -79,7 +80,7 @@ AGENTS.md                                  always-loaded dual-platform router (<
   agents/                                  implementer, reviewer, handoff (explore uses built-in research)
   skills/                                  6 shared portable skills (core + canvas & ClarifyDoc generators)
   hooks/README.md                          hook policy (none enabled)
-  mcp-config.json.example                  empty MCP server list (Antigravity format)
+  mcp_config.json.example                  empty MCP server list (Antigravity format)
 .github/
   instructions/                            3 Copilot path-scoped instructions (agent-authoring, docs, handoff-canvas)
   agents/                                  coordinator, explorer, implementer, reviewer, handoff

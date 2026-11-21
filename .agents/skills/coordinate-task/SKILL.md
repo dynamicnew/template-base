@@ -5,6 +5,13 @@ description: Lead a multi-step change from the main agent, delegate bounded work
 
 # Coordinate a multi-step change
 
+> **Platform note:** In **GitHub Copilot**, use the `Coordinator` agent
+> ([.github/agents/coordinator.agent.md](../../../.github/agents/coordinator.agent.md),
+> delegating to `Explorer`, `Implementer`, `Reviewer`, and `Project Handoff`).
+> The `invoke_subagent`/`manage_subagents` steps and
+> `flash_lite`/`flash`/`inherit`/`pro` tiers below apply to **Google
+> Antigravity**'s main agent.
+
 Follow [AGENTS.md](../../../AGENTS.md) and [docs/ai/cost.md](../../../docs/ai/cost.md).
 Run coordination from the main agent (which owns `invoke_subagent` and
 `manage_subagents`) and continue until the outcome is verified or a real blocker

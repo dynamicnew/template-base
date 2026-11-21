@@ -1,6 +1,6 @@
 ---
 applyTo: "docs/**"
-description: Rules for editing project documentation.
+description: Rules for creating, editing, or reviewing files under docs/ (including docs/ai/handoff.md).
 ---
 
 - Keep `docs/ai/handoff.md` under about 20 KB; move dated sections unchanged to

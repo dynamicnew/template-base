@@ -46,9 +46,11 @@ Create only the assets appropriate for the repository's actual stack:
 1. **`.gitignore`:** add `.clarifydoc/` so generated analysis artifacts are
    never committed or hand-edited.
 2. **Conditional rules (both platforms, keeping `AGENTS.md` <= ~70 lines):**
-   - Antigravity: `.agents/rules/clarifydoc.md` (`trigger: model_decision`).
+   - Antigravity: `.agents/rules/clarifydoc.md` (`trigger: model_decision` and
+     non-empty `description:` in YAML frontmatter).
    - GitHub Copilot: `.github/instructions/clarifydoc.instructions.md`
-     (`applyTo` covering the project's source paths).
+     (`applyTo` covering the project's source paths and non-empty `description:`
+     in YAML frontmatter).
    - Rules to include:
      - Call `clarifydoc_status` first through one provider and verify the server
        is bound to the current repository root. If `clarifydoc_status` reports a
@@ -104,8 +106,9 @@ Create only the assets appropriate for the repository's actual stack:
 
 1. Run `pwsh -NoProfile -File scripts/check-context-size.ps1 -FailOnWarning`
    and confirm exit `0`, zero duplicate skills across `.agents/skills/` and
-   `.github/skills/`, `AGENTS.md` <= ~70 lines, and zero active MCP configs
-   with machine-local paths.
+   `.github/skills/`, `AGENTS.md` <= ~70 lines, and valid active workspace MCP
+   configs with zero secrets or machine-local paths (and no hyphenated
+   `.agents/mcp-config.json`).
 2. Confirm relative links, frontmatter, and `.gitignore` coverage for
    `.clarifydoc/`.
 3. Check `clarifydoc_status` first: only if it confirms the MCP server is bound
