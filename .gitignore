@@ -1,0 +1,6 @@
+.env
+.env.*
+!.env.example
+*.local.*
+ai-credits*.csv
+node_modules/
